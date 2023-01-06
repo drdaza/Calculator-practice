@@ -1,25 +1,16 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView } from 'vue-router';
+import HeaderCalculator from './components/Header/HeaderCalculator.vue';
 
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Calculator</RouterLink>
-        <RouterLink to="/converter">Converter</RouterLink>
-      </nav>
-    </div>
+    <HeaderCalculator/>
   </header>
 
   <RouterView />
 </template>
 
-<style scoped>
-
+<style lang="scss" scoped>
 </style>
