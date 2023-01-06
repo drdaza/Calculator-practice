@@ -1,12 +1,12 @@
 <script setup>
-
+import Calculator from '../components/MyCalculator/Calculator.vue';
 </script>
 
 <template>
   <main class="container">
     <h1>Calculator</h1>
     <div class="calculator">
-
+      <Calculator/>
 
     </div>
   </main>
