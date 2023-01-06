@@ -11,8 +11,8 @@ import { RouterLink, RouterView } from 'vue-router'
       <HelloWorld msg="You did it!" />
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/">Calculator</RouterLink>
+        <RouterLink to="/converter">Converter</RouterLink>
       </nav>
     </div>
   </header>
