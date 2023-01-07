@@ -2,7 +2,7 @@ import Calculator from '../Calculator/Calculator'
 import Button from '../Calculator/Button/Button'
 import Screen from '../Calculator/Screen/Screen'
 export default function MountCalculator(){
-    let MyScreen = new Screen("0");
+    let MyScreen = new Screen("");
     let MyKeyBoard = MountKeyBoard();
 
     let MyCalculator = new Calculator(MyScreen, MyKeyBoard);

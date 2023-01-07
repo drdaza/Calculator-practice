@@ -6,10 +6,40 @@ import Button from './Button.vue';
 let myCalculator= MountCalculator();
 let temporalValue = ref(myCalculator.Screen.Value);
 let printButtonItem = (ButtonItem)=>{
-    if(ButtonItem=='CE'){
-        temporalValue.value = '0';
-    }
+    let temporaloperation = 0
     temporalValue.value+=ButtonItem;
+    if(ButtonItem=='CE'){
+        temporalValue.value = '';
+    }
+    
+    if(ButtonItem=="="){
+        
+        if(temporalValue.value.includes("+")){
+            
+            let operation = temporalValue.value.split("+");
+            let result = parseFloat(operation[0]) ;
+
+            console.log(operation);
+            for (let index = 1; index < operation.length; index++) {
+                result += parseFloat(operation[index]);
+            }
+            myCalculator.Screen.setValue(result);
+            temporaloperation = myCalculator.Screen.Value;
+        }
+        if(temporalValue.value.includes("-")){
+            
+            let operation = temporalValue.value.split("-");
+            let result = parseFloat(operation[0]);
+
+            console.log(operation);
+            for (let index = 1; index < operation.length; index++) {
+                result -= parseFloat(operation[index]);
+            }
+            myCalculator.Screen.setValue(result);
+            temporalValue.value = myCalculator.Screen.Value;
+        }
+       temporalValue.value = temporaloperation;
+    }
 }
 </script>
 <template>
