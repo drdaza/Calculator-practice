@@ -2,45 +2,59 @@
 import { ref } from 'vue';
 import MountCalculator from '../../MountCalculator/MountCalculator.js';
 import Button from './Button.vue';
+import { ComprobeSign, ResultOperation} from '../../MountCalculator/Operations';
 
 let myCalculator= MountCalculator();
 let temporalValue = ref(myCalculator.Screen.Value);
+let operate = ref(false);
+let point = ref(false);
+let firstNumber = ref(0);
+let secondNumber =ref(0);
+let typeOperation = ref('');
+let temporalResult = ref(0);
 let printButtonItem = (ButtonItem)=>{
-    let temporaloperation = 0
+    if(ButtonItem=="="){
+        console.log(eval(temporalValue.value));
+        
+    }
     temporalValue.value+=ButtonItem;
+    /*
+    if(!ComprobeSign(ButtonItem)){
+        temporalValue.value+=ButtonItem;
+    }
+     if(ComprobeSign(ButtonItem)){
+        if(operate.value){
+            secondNumber.value = parseFloat(temporalValue.value);
+            temporalResult.value += ResultOperation(temporalResult.value, typeOperation.value, secondeNumber.value);
+            
+            temporalValue.value= '';
+            operate.value = false;
+            console.log(temporalResult.value);
+            secondNumber.value = parseFloat(temporalValue.value)
+
+            temporalResult.value = ResultOperation(firstNumber.value, typeOperation.value, secondNumber.value);
+            console.log(eval("2+5-11"));
+            
+            
+        }
+        if(!operate.value){
+            operate.value = true;
+            firstNumber.value = parseFloat(temporalValue.value);
+            typeOperation.value = ButtonItem;
+            temporalValue.value = '';
+        }
+        
+
+    } */
     if(ButtonItem=='CE'){
-        temporalValue.value = '';
+        myCalculator.Screen.setValue('');
+        temporalValue.value = myCalculator.Screen.Value;
     }
     
-    if(ButtonItem=="="){
-        
-        if(temporalValue.value.includes("+")){
-            
-            let operation = temporalValue.value.split("+");
-            let result = parseFloat(operation[0]) ;
-
-            console.log(operation);
-            for (let index = 1; index < operation.length; index++) {
-                result += parseFloat(operation[index]);
-            }
-            myCalculator.Screen.setValue(result);
-            temporaloperation = myCalculator.Screen.Value;
-        }
-        if(temporalValue.value.includes("-")){
-            
-            let operation = temporalValue.value.split("-");
-            let result = parseFloat(operation[0]);
-
-            console.log(operation);
-            for (let index = 1; index < operation.length; index++) {
-                result -= parseFloat(operation[index]);
-            }
-            myCalculator.Screen.setValue(result);
-            temporalValue.value = myCalculator.Screen.Value;
-        }
-       temporalValue.value = temporaloperation;
-    }
+    
+    
 }
+
 </script>
 <template>
     <div>{{ temporalValue }}</div>
